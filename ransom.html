@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Super secret puzzle concept | Henry</title>
+  <style type="text/css">
+    .puzzle {
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+		p.secret {
+			font-size: 32px;
+		}
+
+    p.congrat {
+      font-size: 32px;
+      color: #008000;
+    }
+
+		span.secret:hover {
+      font-size: 36px;
+      cursor: crosshair;
+		}
+
+    .typewriter {
+      font-family: Courier, monospace;
+      display: inline-block;
+    }
+
+    .typewriter-text {
+      display: inline-block;
+      overflow: hidden;
+      letter-spacing: 2px;
+      animation: typing 5s steps(38, end), blink .75s step-end infinite;
+      white-space: nowrap;
+      font-size: 30px;
+      font-weight: 700;
+      border-right: 4px solid orange;
+      box-sizing: border-box;
+    }
+
+    @keyframes typing {
+      from { 
+        width: 0% 
+      }
+      to { 
+        width: 100% 
+      }
+    }
+
+    @keyframes blink {
+      from, to { 
+        border-color: transparent 
+      }
+      50% { 
+        border-color: orange; 
+      }
+    }
+	</style>
+
+	<script type="text/javascript">
+    function possiblyEnter1() {
+
+      button = document.getElementById('submitPuzzle1');
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode == 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        button.click();
+        }
+      }
+
+      function possiblyEnter2() {
+
+      button = document.getElementById('submitPuzzle2');
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode == 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        button.click();
+        }
+      }
+    
+      function checkPuzzle1() {
+        inputs = document.getElementsByTagName('input');
+        input = inputs[0];
+        if(input.value.toLowerCase() == "piglet") {
+				  alert("Thanks for solving the mystery, detective. Onto the next one.");
+          var p1div = document.getElementById('puzzle1');
+          var p2div = document.getElementById('puzzle2');
+          p1div.style.display="none";
+          p2div.style.visibility="visible";
+			  } else {
+				  alert("Nope, we've already ruled them out as a suspect.");
+			  }
+      }
+
+        function checkPuzzle2() {
+        inputs = document.getElementsByTagName('input');
+        input = inputs[1];
+        if(input.value.toLowerCase() == "green tea") {
+          alert("Awesome work, detective. You're going to live forever!");
+          var p2div = document.getElementById('puzzle2');
+          var p3div = document.getElementById('puzzle3');
+          var intro = document.getElementById('intro');
+
+          intro.style.visibility="hidden";
+          p2div.style.display="none";
+          p3div.style.visibility="visible";
+        } else {
+          alert("Nope, that's not the secret.");
+        }
+      }
+
+			//todo:
+
+      // on second puzzle, hide orange cursor when hovering over clue characters rather than make them (so obviously) bigger?
+
+			//make the letters jumbled, covering the page, spaced hysterically funny. css
+			// better spacing between words css
+			// more fun styles css
+			// instructions, multiple puzzles, hidden parts to this puzzle, hints
+			//when you get it right, the page changes or more stuff shows up
+			//difficulty level variety
+			//counter of how may tries you gave 
+			//add a second level puzzle
+
+
+
+
+			//keeps track of how many puzzles you've done
+	</script>
+</head>
+<body style="background-color:black;">
+  <div class="typewriter">
+    <h1 id="intro" class="typewriter-text" style="color: green;">Can you solve a puzzle... in the dark?</h1>
+  </div>
+  <div id="puzzle1" class="puzzle">
+    <p>Move your mouse to find the secret answer.</p>
+    <p class="secret">HAP<span class="secret">P</span>Y B<span class="secret">I</span>RTHDAY I<span class="secret">G</span>OR, <span class="secret">L</span>ET'S M<span class="secret">E</span>E<span class="secret">T</span>!</p>
+    <label>Who killed Igor?</label>
+    <input type="text" name="answer" onkeydown="possiblyEnter1()" style="background-color: black; color: white; border: 1px solid #000000;">
+    <button id="submitPuzzle1" onclick="checkPuzzle1()" style="visibility: hidden">yes?</button>
+  </div>
+
+  <div id="puzzle2" style="visibility: hidden" class="puzzle">
+    <p>Move your mouse to find the secret answer.</p>
+    <p class="secret"><span class="secret">G</span><span class="secret">R</span>OW TR<span class="secret">E</span><span class="secret">E</span>S A<span class="secret">N</span>D<span class="secret"> </span>EA<span class="secret">T</span> H<span class="secret">E</span><span class="secret">A</span>LTHY</p>
+    <label>What's the secret to long life?</label>
+    <input type="text" name="answer" onkeydown="possiblyEnter2()" style="background-color: black; color: white; border: 1px solid #000000;">
+    <button id="submitPuzzle2" onclick="checkPuzzle2()" style="visibility: hidden">yes?</button>
+  </div>
+  <div id="puzzle3" style="visibility: hidden;" class="puzzle">
+    <p class="congrat">You're done! Puzzle master extraordinaire 🏅</p>
+  </div>
+</body>
+</html>
